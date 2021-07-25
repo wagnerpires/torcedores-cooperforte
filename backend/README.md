@@ -23,3 +23,4 @@ Acessar a url [http://localhost:3000](http://localhost:3000) para navegar
 * Ecossistema Spring: Jpa, SpringWeb, SpringDevTools, SpringSecurity
 * Material ui (Ui Framework)
 * Via Cep (API)
+* JUnit

@@ -1,6 +1,6 @@
 package br.com.desafio.cooperforteservice.security;
 
-import br.com.desafio.cooperforteservice.Usuario;
+import br.com.desafio.cooperforteservice.entities.Usuario;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

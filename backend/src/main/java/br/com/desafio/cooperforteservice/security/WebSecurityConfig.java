@@ -1,6 +1,6 @@
 package br.com.desafio.cooperforteservice.security;
 
-import br.com.desafio.cooperforteservice.config.CustomCorsFilter;
+import br.com.desafio.cooperforteservice.configs.CustomCorsFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

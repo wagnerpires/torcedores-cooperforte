@@ -1,4 +1,4 @@
-# Cadastro de Torcedores - COOPERFORTE 2021
+********# Cadastro de Torcedores - COOPERFORTE 2021
 
 ## Para executar o projeto
 
@@ -30,3 +30,4 @@ Acessar a url [http://localhost:3000](http://localhost:3000) para navegar
 * Ecossistema Spring: Jpa, SpringWeb, SpringDevTools, SpringSecurity
 * Material ui (Ui Framework)
 * Via Cep (API)
+* JUnit
