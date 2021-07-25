@@ -2,8 +2,9 @@
 
 ## Para executar o projeto
 
-### `npm i`
-### `npm start`
+### `mvn clean install -DskipTests=true`
+### `cd target
+### `javar -jar`cooperforte-service-0.0.1-SNAPSHOT.jar
 
 Acessar a url [http://localhost:3000](http://localhost:3000) para navegar
 
