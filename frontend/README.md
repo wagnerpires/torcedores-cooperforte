@@ -8,12 +8,14 @@
 Acessar a url [http://localhost:3000](http://localhost:3000) para navegar
 
 Foram utilizados
-* Create React App como starter
-* Material ui (Ui Framework)
-* Via Cep (API)
+* React
 * Formik para gerenciar formulários
 * DockerFile (Docker)
 * H2 Database
+* Maven
+* Ecossistema Spring: Jpa, SpringWeb, SpringDevTools, SpringSecurity
+* Material ui (Ui Framework)
+* Via Cep (API)
 
 ### Para autenticar no sistema:
 
