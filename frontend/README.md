@@ -2,8 +2,8 @@
 
 ## Para executar o projeto
 
-### `npm i`
-### `npm start`
+### `yarn`install
+###  yarn start`
 
 Acessar a url [http://localhost:3000](http://localhost:3000) para navegar
 
