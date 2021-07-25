@@ -13,8 +13,10 @@ Acessar a url [http://localhost:3000](http://localhost:3000) para navegar
     usuário: admin
 	senha: 123456
 
-### Tecnologias utilizadas no desenvolvimento:
+### Principais tecnologias utilizadas no desenvolvimento:
 
+* Apache Maven
+* Java 11
 * React
 * Formik para gerenciar formulários
 * DockerFile (Docker)
