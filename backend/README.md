@@ -10,15 +10,10 @@ Acessar a url [http://localhost:3000](http://localhost:3000) para navegar
 
 ### Para acesso ao sistema:
 
-* Usuário padrão: 
-    usuário: cooper
-	senha: 123456
-
-* Administrador:
     usuário: admin
 	senha: 123456
 
-Tecnologias utilizadas no desenvolvimento:
+### Tecnologias utilizadas no desenvolvimento:
 
 * React
 * Formik para gerenciar formulários
