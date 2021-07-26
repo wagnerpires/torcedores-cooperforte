@@ -8,7 +8,18 @@
 
 Acessar a url [http://localhost:3000](http://localhost:3000) para navegar
 
-Foram utilizados
+### Para acesso ao sistema:
+
+* Usuário padrão: 
+    usuário: cooper
+	senha: 123456
+
+* Administrador:
+    usuário: admin
+	senha: 123456
+
+Tecnologias utilizadas no desenvolvimento:
+
 * React
 * Formik para gerenciar formulários
 * DockerFile (Docker)
@@ -17,15 +28,3 @@ Foram utilizados
 * Ecossistema Spring: Jpa, SpringWeb, SpringDevTools, SpringSecurity
 * Material ui (Ui Framework)
 * Via Cep (API)
-
-
-### Para autenticar no sistema:
-
-* Administrador:
-    usuário: admin
-	senha: 123456
-	
-* como usuário comum: 
-    usuario
-	senha: 123456
-
