@@ -1,14 +1,14 @@
 import { FieldArray, Formik } from "formik";
 import { FormControl, Grid, InputLabel, MenuItem } from "@material-ui/core";
 import { atualizar, criar } from "../services/torcedores-service";
-import { erro, sucesso } from "./alertas/alertas";
+import { erro, sucesso } from "./alerts/alertas";
 import {
   maskCep,
   maskCpf,
   maskJustLetters,
   maskJustNumbers,
   maskPhone,
-} from "../masks/masks";
+} from "../field-masks/masks";
 
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
@@ -76,7 +76,7 @@ class FormularioTorcedor extends React.Component {
         this.props.history.push("/torcedores");
       })
       .catch(() => {
-        erro("Oops", "Ocorreu um erro ao tentar salvar o torcedor");
+        erro("Aviso", "Ocorreu um erro ao tentar salvar o torcedor");
       });
   };
 
@@ -87,7 +87,7 @@ class FormularioTorcedor extends React.Component {
         this.props.history.push("/torcedores");
       })
       .catch(() => {
-        erro("Oops", "Erro ao tentar atualizar dados do torcedor");
+        erro("Aviso", "Erro ao tentar atualizar dados do torcedor");
       });
   };
 
@@ -121,7 +121,7 @@ class FormularioTorcedor extends React.Component {
     );
 
     if (emailCadastrado) {
-      erro("Opos!", "email já adicionado");
+      erro("Aviso", "email já adicionado");
       return;
     }
 
@@ -146,7 +146,7 @@ class FormularioTorcedor extends React.Component {
     );
 
     if (telefoneCadastrado) {
-      erro("Opos!", "telefone já adicionado");
+      erro("Aviso", "Telefone já adicionado");
       return;
     }
 
@@ -174,7 +174,7 @@ class FormularioTorcedor extends React.Component {
           <Box m={2}>
             <Link to={"/torcedores"} className={classes.link}>
               <Typography variant="body2">
-                <Button margin="normal" variant="contained">
+                <Button margin="normal" variant="contained" color="primary">
                   Cancelar
                 </Button>
               </Typography>
@@ -189,25 +189,25 @@ class FormularioTorcedor extends React.Component {
               const errors = {};
 
               if (!values.cpf) {
-                errors.cpf = "Precisamos do seu cpf para continuar";
+                errors.cpf = "Informe o cpf para continuar";
               } else if (!validate(values.cpf)) {
-                errors.cpf = "O cpf informádo não é válido";
+                errors.cpf = "Cpf informado não é válido";
               }
 
               if (!values.nome) {
-                errors.nome = "Informe seu nome para continuar";
+                errors.nome = "Informe o nome para continuar";
               } else if (values.nome.length < 3) {
-                errors.nome = "Seu nome deve conter mais de 3 caracteres";
+                errors.nome = "O nome deve conter mais de 3 caracteres";
               } else if (values.nome.length > 100) {
-                errors.nome = "Seu nome deve conter menos de 100 caracteres";
+                errors.nome = "O nome deve conter menos de 100 caracteres";
               }
 
               if (values.emails && !values.emails.length) {
-                errors.emails = "Pelo menos um email deve ser adicionado";
+                errors.emails = "No mínimo um email deve ser adicionado";
               }
 
               if (values.telefones && !values.telefones.length) {
-                errors.emails = "Pelo menos um email deve ser adicionado";
+                errors.emails = "No mínimo um telefone deve ser adicionado";
               }
 
               return errors;
@@ -333,7 +333,7 @@ class FormularioTorcedor extends React.Component {
                   </Grid>
 
                   <Grid item xs={12} sm={6}>
-                    <Typography variant="h5">Telefones</Typography>
+                    <Typography variant="h5">Telefones de Contato</Typography>
                     <FieldArray
                       name="telefones"
                       render={(arrayHelpers) => (

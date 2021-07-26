@@ -48,10 +48,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return super.authenticationManagerBean();
     }
 
-    //AUTORIZAÇÕES
-
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
+
+        //AUTORIZAÇÕES
+
         httpSecurity.csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/auth/authenticate/**").permitAll()

@@ -1,6 +1,6 @@
 import { deletar, listar } from "../services/torcedores-service";
-import { erro, sucesso } from "./alertas/alertas";
-import { maskCep, maskCpf, maskPhone } from "../masks/masks";
+import { erro, sucesso } from "./alerts/alertas";
+import { maskCep, maskCpf, maskPhone } from "../field-masks/masks";
 
 import Badge from "@material-ui/core/Badge";
 import Box from "@material-ui/core/Box";
@@ -38,7 +38,7 @@ class TorcedorLista extends React.Component {
         this.setState({ torcedores: data });
       },
       () => {
-        erro("Oops!", "ocorreu um erro ao buscar torcedores");
+        erro("Aviso", "ocorreu um erro ao buscar torcedores");
       }
     );
   }
@@ -52,7 +52,7 @@ class TorcedorLista extends React.Component {
         sucesso("", "Torcedor excluído com sucesso!");
       })
       .catch(() => {
-        erro("Oops!", "Ocorreu um erro ao tentar excluir torcedor");
+        erro("Aviso", "Ocorreu um erro ao tentar excluir torcedor");
       });
   };
 
@@ -79,7 +79,7 @@ class TorcedorLista extends React.Component {
                 <Button variant="contained" color="primary">
                   {this.state.torcedores.length
                     ? "Novo torcedor"
-                    : "Adicionar torcedor"}
+                    : "Incluir torcedor"}
                 </Button>
               )}
             </Typography>
