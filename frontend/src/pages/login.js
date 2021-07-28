@@ -28,7 +28,7 @@ class Login extends React.Component {
         }
       })
       .catch((error) => {
-        erro("Aviso", "Usuário ou senha inválidos!");
+        erro("Aviso", "Usuário/senha inválidos ou serviço parado!");
       });
   };
 

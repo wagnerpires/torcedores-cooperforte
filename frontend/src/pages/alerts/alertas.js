@@ -1,6 +1,6 @@
 import swal from "sweetalert";
 
-const sucesso = (titulo = "Tudo ok!", mensagem) => {
+const sucesso = (titulo = "Tudo okey!", mensagem) => {
     swal(titulo, mensagem, "success");
 };
 
