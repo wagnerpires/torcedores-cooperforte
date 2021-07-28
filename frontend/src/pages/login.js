@@ -27,7 +27,8 @@ class Login extends React.Component {
         }
       })
       .catch((erro) => {
-        erro("Erro no login", erro);
+        alert("Usuário ou senha inválidos!");
+        //erro("Erro no login", erro);
       });
   };
 
@@ -97,8 +98,7 @@ class Login extends React.Component {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   autoComplete="senha"
-                  autoFocus
-                />
+                 />
 
                 <Button
                   type="submit"
