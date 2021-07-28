@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -32,14 +34,16 @@ public class Torcedor {
     @Column(nullable = false)
     private String cpf;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     @JoinColumn(name = "torcedor_id", nullable = false)
     @Size(min = 1)
+    @Fetch(FetchMode.SUBSELECT)
     private List<Email> emails = new ArrayList<>();
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     @JoinColumn(name = "torcedor_id", nullable = false)
     @Size(min = 1)
+    @Fetch(FetchMode.SUBSELECT)
     private List<Telefone> telefones = new ArrayList<>();
 
     @Column(nullable = false)
