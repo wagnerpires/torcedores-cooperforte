@@ -417,6 +417,8 @@ class FormularioTorcedor extends React.Component {
                                     values.telefones[index].tipo
                                   )}{" "}
                                   ({values.telefones[index].tipo})
+                                   {values.telefones[index].principal === "Sim" ? " Contato Principal " : " "}
+
                                   <button
                                     type="button"
                                     onClick={() => arrayHelpers.remove(index)}>-
