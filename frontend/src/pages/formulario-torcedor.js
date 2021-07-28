@@ -145,7 +145,8 @@ class FormularioTorcedor extends React.Component {
   ) {
     const telefoneCadastrado = values.telefones.some(
       (telefone) =>
-        telefone.telefone === maskJustNumbers(getFieldProps("celular").value)
+        // telefone.telefone === maskJustNumbers(getFieldProps("celular").value)
+        telefone.telefone === getFieldProps("celular").value
     );
 
     if (telefoneCadastrado) {

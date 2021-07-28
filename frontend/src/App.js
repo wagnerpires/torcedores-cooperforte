@@ -7,11 +7,12 @@ import FormularioTorcedor from "./pages/formulario-torcedor";
 import Login from "./pages/login";
 import React from "react";
 import {usuarioEstaLogado} from "./services/autenticacao-service";
+import MainImage from './assets/images/logo.png';
 
 class App extends React.Component {
     render() {
         return (<div className="App">
-                <header className="App-header"> {" "}Cooperforte - Cadastro de Torcedores{" "}
+                <header className="App-header"><div className="App-logo-cooper"><img src={MainImage}/></div>Cadastro de Torcedores
                 </header>
                 {" "} <Switch>
                 <Route exact path={["/", "/login"]} component={Login}/>{" "}

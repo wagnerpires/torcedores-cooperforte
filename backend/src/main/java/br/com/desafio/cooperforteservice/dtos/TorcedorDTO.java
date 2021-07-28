@@ -11,6 +11,7 @@ import javax.validation.constraints.Size;
 import java.util.List;
 
 @Data
+@AllArgsConstructor
 public class TorcedorDTO {
 
     private Long id;

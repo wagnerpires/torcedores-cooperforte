@@ -13,6 +13,12 @@
   }
 }
 
+.App-logo-cooper {
+  padding-top: 15px;
+  height: 165;
+  width: 30;
+}
+
 .App-header {
   background-color: darkorange;
   min-height: 6vh;

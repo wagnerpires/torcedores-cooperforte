@@ -20,20 +20,7 @@ import java.util.List;
 public class TorcedorController {
 
     private TorcedorService torcedorService;
-
     private AutenticacaoService autenticacaoService;
-
-    @GetMapping
-    public ResponseEntity<List<Torcedor>> listar(){
-        return ResponseEntity.ok(torcedorService.listar());
-    }
-
-/*
-    @GetMapping
-    public ResponseEntity<List<Torcedor>> listar(){
-        return ResponseEntity.ok(torcedorService.listar());
-    }
-*/
 
     @PostMapping
     public ResponseEntity<TorcedorDTO> novo(@RequestBody @Valid TorcedorDTO torcedorDTO){
@@ -41,13 +28,6 @@ public class TorcedorController {
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(torcedorDTO.getId()).toUri();
         return ResponseEntity.created(uri).body(torcedorDTO);
     }
-/* MOSTRAR IVO O Q FOI FEITO
-    @PostMapping
-    public ResponseEntity<Torcedor> novo(@RequestBody @Valid TorcedorDTO torcedorDTO){
-        Torcedor novo = torcedorService.novo(torcedorDTO);
-        return ResponseEntity.ok(novo);
-    }
- */
 
     @DeleteMapping("/{id}")
     public ResponseEntity excluir(@PathVariable("id") Long id){
@@ -61,12 +41,8 @@ public class TorcedorController {
         return ResponseEntity.ok(torcedorDTO);
     }
 
-/* MOSTRAR IVO O Q FOI FEITO
-    @PutMapping("/{id}")
-    public ResponseEntity<Torcedor> editar(@PathVariable("id") Long id, @RequestBody @Valid TorcedorDTO torcedorDTO){
-        Torcedor torcedor = torcedorService.editar(id, torcedorDTO);
-        return ResponseEntity.ok(torcedor);
+    @GetMapping
+    public ResponseEntity<List<Torcedor>> listar(){
+        return ResponseEntity.ok(torcedorService.listar());
     }
- */
-
 }
