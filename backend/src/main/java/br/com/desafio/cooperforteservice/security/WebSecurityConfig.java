@@ -53,7 +53,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         //AUTORIZAÇÕES
 
-        httpSecurity.csrf().disable()
+        httpSecurity.csrf().disable().headers().frameOptions().disable();
+        httpSecurity
                 .authorizeRequests()
                 .antMatchers("/auth/authenticate/**").permitAll()
                 .antMatchers(HttpMethod.POST, "/torcedores/**").hasAnyAuthority("ADMIN")
