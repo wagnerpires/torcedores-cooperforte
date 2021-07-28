@@ -17,7 +17,10 @@ Acessar a url [http://localhost:3000](http://localhost:3000) para navegar
 
 ### Para acesso ao sistema:
 
-    usuário: admin
+    usuário: admin 
+    senha: 123456 - Administrador (todas as operações CRUD permitidas)
+	
+	usuário: cooper - Visualização (listar torcedores)
 	senha: 123456
 
 ### Principais tecnologias utilizadas no desenvolvimento:

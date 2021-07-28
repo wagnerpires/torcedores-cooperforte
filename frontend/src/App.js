@@ -11,7 +11,7 @@ import {usuarioEstaLogado} from "./services/autenticacao-service";
 class App extends React.Component {
     render() {
         return (<div className="App">
-                <header className="App-header"> {" "}Cadastro de Torcedores - Cooperforte {" "}
+                <header className="App-header"> {" "}Cooperforte - Cadastro de Torcedores{" "}
                 </header>
                 {" "} <Switch>
                 <Route exact path={["/", "/login"]} component={Login}/>{" "}
