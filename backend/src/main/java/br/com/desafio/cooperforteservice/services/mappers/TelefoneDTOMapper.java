@@ -11,6 +11,7 @@ public class TelefoneDTOMapper {
     public static List<Telefone> parseParaEntidade(List<TelefoneDTO> telefoneDTOS) {
         List<Telefone> collect = telefoneDTOS.stream().map(telefoneDTO -> Telefone.builder()
                 .id(telefoneDTO.getId())
+                .principal(telefoneDTO.getPrincipal())
                 .telefone(telefoneDTO.getTelefone())
                 .tipo(telefoneDTO.getTipo()).build())
                 .collect(Collectors.toList());

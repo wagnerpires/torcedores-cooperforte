@@ -10,5 +10,5 @@ insert into tb_torcedor (nome, cpf, cep, cidade, logradouro, bairro, uf, excluid
 insert into tb_email(torcedor_id, email) VALUES (1, 'nelson@gmail.com');
 insert into tb_email(torcedor_id, email) VALUES (2, 'prost@gmail.com');
 
-insert into tb_telefone(telefone, tipo, torcedor_id) VALUES  ('61981626852', 'CELULAR', 1 );
-insert into tb_telefone(telefone, tipo, torcedor_id) VALUES  ('6130251687', 'COMERCIAL', 2);
+insert into tb_telefone(telefone, tipo, torcedor_id, principal) VALUES  ('61981626852', 'CELULAR', 1, true );
+insert into tb_telefone(telefone, tipo, torcedor_id, principal) VALUES  ('6130251687', 'COMERCIAL', 2, true);

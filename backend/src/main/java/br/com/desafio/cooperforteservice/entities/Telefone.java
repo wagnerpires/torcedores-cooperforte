@@ -26,4 +26,6 @@ public class Telefone {
     @Column(nullable = false)
     private String telefone;
 
+    private String principal;
+
 }

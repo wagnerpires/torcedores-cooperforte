@@ -159,10 +159,12 @@ class FormularioTorcedor extends React.Component {
     arrayHelpers.push({
       telefone: getFieldProps("celular").value,
       tipo: getFieldProps("tipo").value,
+      principal: getFieldProps("principal").value,
     });
 
     setFieldValue("celular", "");
     setFieldValue("tipo", "");
+    setFieldValue("principal", "");
     touched.celular = false;
   }
 
@@ -364,10 +366,7 @@ class FormularioTorcedor extends React.Component {
                             fullWidth
                             type="text"
                             name="celular"
-                            value={maskPhone(
-                              values.celular,
-                              getFieldProps("tipo").value
-                            )}
+                            value={maskPhone(values.celular, getFieldProps("tipo").value)}
                             onChange={handleChange}
                             onBlur={handleBlur}
                           />
@@ -382,12 +381,10 @@ class FormularioTorcedor extends React.Component {
                                 name="principal"
                                 onChange={handleChange}
                                 label="Contato Principal">
-                              <MenuItem value={"SIM"}>Sim</MenuItem>
-                              <MenuItem value={"NÃO"}>Não</MenuItem>
+                              <MenuItem value={"Sim"}>Sim</MenuItem>
+                              <MenuItem value={"Não"}>Não</MenuItem>
                             </Select>
                           </FormControl>
-
-
 
                           <Box m={2}>
                             <Button
