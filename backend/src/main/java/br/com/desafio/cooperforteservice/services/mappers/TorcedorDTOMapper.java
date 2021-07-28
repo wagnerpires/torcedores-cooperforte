@@ -32,7 +32,7 @@ public class TorcedorDTOMapper {
     public static Torcedor atualizarEntity(TorcedorDTO torcedorDTO, Torcedor torcedor) {
         List<Email> emails = EmailDTOMapper.parseParaEntidade(torcedorDTO.getEmails());
         List<Telefone> telefones = TelefoneDTOMapper.parseParaEntidade(torcedorDTO.getTelefones());
-        //TODO: Configurar mapper (lib)
+
         torcedor.setNome(torcedorDTO.getNome());
         torcedor.setCpf(torcedorDTO.getCpf());
         torcedor.setUf(torcedorDTO.getUf());

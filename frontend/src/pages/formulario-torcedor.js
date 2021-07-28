@@ -97,7 +97,7 @@ class FormularioTorcedor extends React.Component {
   atualizarCampoDependentesDoCep = (value, setFieldValue) => {
     let cep = value.target.value.replace(/\D/g, "");
 
-    if (cep.length > 6) {
+    if (cep.length > 7) {
       obterEnderecoPeloCep(cep).then((res) => {
         if (res) {
           let { complemento, logradouro, localidade, uf, bairro } = res.data;
@@ -124,7 +124,7 @@ class FormularioTorcedor extends React.Component {
     );
 
     if (emailCadastrado) {
-      erro("Aviso", "email já adicionado");
+      erro("Aviso", "email já cadastrado");
       return;
     }
 
@@ -149,7 +149,7 @@ class FormularioTorcedor extends React.Component {
     );
 
     if (telefoneCadastrado) {
-      erro("Aviso", "Telefone já adicionado");
+      erro("Aviso", "Telefone já cadastrado");
       return;
     }
 

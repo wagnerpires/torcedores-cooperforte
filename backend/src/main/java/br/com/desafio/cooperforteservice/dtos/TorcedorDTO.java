@@ -1,6 +1,5 @@
 package br.com.desafio.cooperforteservice.dtos;
 
-
 import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
@@ -54,5 +53,7 @@ public class TorcedorDTO {
 
     private String complemento;
 
+    public TorcedorDTO() {
+    }
 }
 

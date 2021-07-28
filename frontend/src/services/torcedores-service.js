@@ -19,17 +19,14 @@ const deletar = (id) => {
 };
 const listar = () => {
   //Workaround
-  /*
+
   if (
     api.defaults &&
     api.defaults.headers.Authorization &&
     api.defaults.headers.Authorization.includes(null)
   ) {
-    api.defaults.headers.Authorization = `Bearer ${localStorage.getItem(
-      "token"
-    )}`;
+    api.defaults.headers.Authorization = `Bearer ${localStorage.getItem("token")}`;
   }
-  */
   return api.get(`/torcedores`);
 };
 
