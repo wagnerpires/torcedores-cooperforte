@@ -58,12 +58,15 @@ class FormularioTorcedor extends React.Component {
 
   onSubmit = (dados, { setSubmitting }) => {
     const cpf = maskJustNumbers(dados.cpf);
+
+    const cep = maskJustNumbers(dados.cep);
+
     const telefones = dados.telefones.map((telefone) => {
       telefone.telefone = maskJustNumbers(telefone.telefone);
       return telefone;
     });
 
-    dados = { ...dados, cpf, telefones };
+    dados = { ...dados, cpf, telefones, cep };
 
     if (dados && dados.id) {
       this.atualizarTorcedor(dados);
