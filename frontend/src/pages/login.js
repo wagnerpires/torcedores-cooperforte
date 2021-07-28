@@ -34,25 +34,18 @@ class Login extends React.Component {
 
   render() {
     const classes = {};
-
     return (
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <div className={classes.paper}>
-          <Typography component="h1" variant="h5">
-            Entre com usuário e senha
-          </Typography>
-
           <Formik
             initialValues={this.state.values}
             validateOnMount={true}
             onSubmit={this.onSubmit}
             validate={(values) => {
               const errors = {};
-
               return errors;
-            }}
-          >
+            }}>
             {({
               values,
               touched,
@@ -82,9 +75,7 @@ class Login extends React.Component {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   autoComplete="usuario"
-                  autoFocus
-                />
-
+                  autoFocus/>
                 <TextField
                   error={errors.senha && touched.senha}
                   helperText={errors.senha && touched.senha && errors.senha}
@@ -97,16 +88,13 @@ class Login extends React.Component {
                   value={values.senha}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  autoComplete="senha"
-                 />
-
+                  autoComplete="senha"/>
                 <Button
                   type="submit"
                   fullWidth
                   variant="contained"
                   color="primary"
-                  className={classes.submit}
-                >
+                  className={classes.submit}>
                   Acessar o sistema
                 </Button>
               </form>

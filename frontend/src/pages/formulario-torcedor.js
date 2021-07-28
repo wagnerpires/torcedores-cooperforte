@@ -1,5 +1,7 @@
+import "./FormTorcedor.css";
+
 import { FieldArray, Formik } from "formik";
-import { FormControl, Grid, InputLabel, MenuItem } from "@material-ui/core";
+import { FormControl, Grid, InputLabel, MenuItem, FormLabel, RadioGroup, FormControlLabel, Radio } from "@material-ui/core";
 import { atualizar, criar } from "../services/torcedores-service";
 import { erro, sucesso } from "./alerts/alertas";
 import {
@@ -175,16 +177,6 @@ class FormularioTorcedor extends React.Component {
     return (
       <React.Fragment>
         <Container fixed>
-          <Box m={2}>
-            <Link to={"/torcedores"} className={classes.link}>
-              <Typography variant="body2">
-                <Button margin="normal" variant="contained" color="primary">
-                  Cancelar
-                </Button>
-              </Typography>
-            </Link>
-          </Box>
-
           <Formik
             initialValues={this.state.values}
             validateOnMount={true}
@@ -352,8 +344,7 @@ class FormularioTorcedor extends React.Component {
                               value={values.tipo}
                               name="tipo"
                               onChange={handleChange}
-                              label="Tipo do telefone"
-                            >
+                              label="Tipo do telefone">
                               <MenuItem value={"RESIDENCIAL"}>Residencial</MenuItem>
                               <MenuItem value={"CELULAR"}>Celular</MenuItem>
                               <MenuItem value={"COMERCIAL"}>Comercial</MenuItem>
@@ -368,7 +359,7 @@ class FormularioTorcedor extends React.Component {
                               touched.celular &&
                               errors.celular
                             }
-                            label="Celular"
+                            label="Nº do telefone"
                             variant="outlined"
                             fullWidth
                             type="text"
@@ -380,6 +371,23 @@ class FormularioTorcedor extends React.Component {
                             onChange={handleChange}
                             onBlur={handleBlur}
                           />
+
+                          <div className="botao-is-principal"></div>
+                          <FormControl variant="outlined" fullWidth>
+                            <InputLabel id="isPrincipal">Contato Principal</InputLabel>
+                            <Select
+                                labelId="isPrincipal"
+                                id="isPrincipal"
+                                value={values.principal}
+                                name="principal"
+                                onChange={handleChange}
+                                label="Contato Principal">
+                              <MenuItem value={"SIM"}>Sim</MenuItem>
+                              <MenuItem value={"NÃO"}>Não</MenuItem>
+                            </Select>
+                          </FormControl>
+
+
 
                           <Box m={2}>
                             <Button
@@ -414,9 +422,7 @@ class FormularioTorcedor extends React.Component {
                                   ({values.telefones[index].tipo})
                                   <button
                                     type="button"
-                                    onClick={() => arrayHelpers.remove(index)}
-                                  >
-                                    -
+                                    onClick={() => arrayHelpers.remove(index)}>-
                                   </button>
                                 </div>
                               ))
@@ -425,7 +431,6 @@ class FormularioTorcedor extends React.Component {
                       )}
                     />
                   </Grid>
-
                   <Grid item xs={12} sm={6}>
                     <Typography variant="h5">Emails</Typography>
                     <FieldArray
@@ -473,7 +478,6 @@ class FormularioTorcedor extends React.Component {
                               +
                             </Button>
                           </Box>
-
                           {values.emails && values.emails.length > 0
                             ? values.emails.map((email, index) => (
                                 <div key={index}>
@@ -493,15 +497,20 @@ class FormularioTorcedor extends React.Component {
                   </Grid>
                 </Grid>
 
-                <Button
-                  type="submit"
-                  form="form1"
-                  variant="contained"
-                  color="primary"
-                  disabled={!isValid}
-                >
-                  Salvar
-                </Button>
+                <div className="botao-salvar"></div>
+                <Grid container direction="row" justifyContent="space-around" alignItems="center">
+                  <Button type="submit" form="form1" variant="contained" color="primary" disabled={!isValid}>
+                    Salvar
+                  </Button>
+
+                  <Link to={"/torcedores"} className={classes.link}>
+                    <Typography variant="body2">
+                      <Button  className={classes.submit} margin="normal" variant="contained" color="primary">
+                        Cancelar
+                      </Button>
+                    </Typography>
+                  </Link>
+                </Grid>
               </form>
             )}
           </Formik>

@@ -52,13 +52,10 @@ public class TorcedorService {
     @Transactional
     public TorcedorDTO editar(Long id, TorcedorDTO torcedorDTO) {
         Torcedor torcedor = torcedorRepository.findById(id).orElseThrow(() -> new TorcedorNotFound("Usuário não encontrado: " + id));
-
         TorcedorDTOMapper.atualizarEntity(torcedorDTO, torcedor);
         torcedor.setUsuarioUltimaAtualizacao(autenticacaoService.obterUsuarioLogado());
         torcedorRepository.save(torcedor);
-
         logService.registrar(OperacaoEnum.ATUALIZACAO, torcedor);
-
         return new TorcedorDTO(torcedor);
     }
 }
