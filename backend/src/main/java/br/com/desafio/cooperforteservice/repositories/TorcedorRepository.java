@@ -1,5 +1,6 @@
 package br.com.desafio.cooperforteservice.repositories;
 
+import br.com.desafio.cooperforteservice.dtos.TorcedorDTO;
 import br.com.desafio.cooperforteservice.entities.Torcedor;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

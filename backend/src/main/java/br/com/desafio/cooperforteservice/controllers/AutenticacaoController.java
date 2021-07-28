@@ -1,4 +1,4 @@
-package br.com.desafio.cooperforteservice.resources;
+package br.com.desafio.cooperforteservice.controllers;
 
 import br.com.desafio.cooperforteservice.dtos.JwtRequest;
 import br.com.desafio.cooperforteservice.dtos.JwtResponse;

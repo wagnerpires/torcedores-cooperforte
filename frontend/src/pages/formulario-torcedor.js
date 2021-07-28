@@ -444,7 +444,7 @@ class FormularioTorcedor extends React.Component {
                             value={values.email}
                             onChange={handleChange}
                             onBlur={handleBlur}
-                          />
+                           />
 
                           <Box m={2}>
                             <Button

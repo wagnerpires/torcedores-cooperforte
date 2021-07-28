@@ -1,4 +1,4 @@
-package br.com.desafio.cooperforteservice.resources;
+package br.com.desafio.cooperforteservice.controllers;
 
 import br.com.desafio.cooperforteservice.dtos.TorcedorDTO;
 import br.com.desafio.cooperforteservice.entities.Torcedor;
@@ -8,8 +8,10 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
+import java.net.URI;
 import java.util.List;
 
 @Controller
@@ -26,11 +28,26 @@ public class TorcedorController {
         return ResponseEntity.ok(torcedorService.listar());
     }
 
+/*
+    @GetMapping
+    public ResponseEntity<List<Torcedor>> listar(){
+        return ResponseEntity.ok(torcedorService.listar());
+    }
+*/
+
+    @PostMapping
+    public ResponseEntity<TorcedorDTO> novo(@RequestBody @Valid TorcedorDTO torcedorDTO){
+        torcedorDTO = torcedorService.novo(torcedorDTO);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(torcedorDTO.getId()).toUri();
+        return ResponseEntity.created(uri).body(torcedorDTO);
+    }
+/* MOSTRAR IVO O Q FOI FEITO
     @PostMapping
     public ResponseEntity<Torcedor> novo(@RequestBody @Valid TorcedorDTO torcedorDTO){
         Torcedor novo = torcedorService.novo(torcedorDTO);
         return ResponseEntity.ok(novo);
     }
+ */
 
     @DeleteMapping("/{id}")
     public ResponseEntity excluir(@PathVariable("id") Long id){
@@ -39,8 +56,17 @@ public class TorcedorController {
     }
 
     @PutMapping("/{id}")
+    public ResponseEntity<TorcedorDTO> editar(@PathVariable("id") Long id, @RequestBody @Valid TorcedorDTO torcedorDTO){
+        torcedorDTO = torcedorService.editar(id, torcedorDTO);
+        return ResponseEntity.ok(torcedorDTO);
+    }
+
+/* MOSTRAR IVO O Q FOI FEITO
+    @PutMapping("/{id}")
     public ResponseEntity<Torcedor> editar(@PathVariable("id") Long id, @RequestBody @Valid TorcedorDTO torcedorDTO){
         Torcedor torcedor = torcedorService.editar(id, torcedorDTO);
         return ResponseEntity.ok(torcedor);
     }
+ */
+
 }

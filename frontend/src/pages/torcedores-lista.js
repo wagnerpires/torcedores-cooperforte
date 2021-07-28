@@ -19,7 +19,7 @@ import MailIcon from "@material-ui/icons/Mail";
 import PhoneIcon from "@material-ui/icons/Phone";
 import React from "react";
 import Typography from "@material-ui/core/Typography";
-import { usuarioLogadoEhAdministrador } from "../services/autenticacao-service";
+import { usuarioLogadoIsAdministrador } from "../services/autenticacao-service";
 import { withRouter } from "react-router-dom";
 
 class TorcedorLista extends React.Component {
@@ -27,7 +27,7 @@ class TorcedorLista extends React.Component {
     super(props);
     this.state = {
       torcedores: [],
-      usuarioLogadoEhAdministrador: usuarioLogadoEhAdministrador(),
+      usuarioLogadoIsAdministrador: usuarioLogadoIsAdministrador(),
     };
   }
 
@@ -75,16 +75,13 @@ class TorcedorLista extends React.Component {
         <Container fixed>
           <Link to={"/novo"} className={classes.link}>
             <Typography variant="body2">
-              {this.state.usuarioLogadoEhAdministrador && (
+              {this.state.usuarioLogadoIsAdministrador && (
                 <Button variant="contained" color="primary">
-                  {this.state.torcedores.length
-                    ? "Novo torcedor"
-                    : "Incluir torcedor"}
+                  {this.state.torcedores.length ? "Novo torcedor" : "Incluir torcedor"}
                 </Button>
               )}
             </Typography>
           </Link>
-
           {this.state.torcedores.map((torcedor) => {
             return (
               <Box key={torcedor.id} m={2}>
@@ -95,13 +92,13 @@ class TorcedorLista extends React.Component {
                     </IconButton>
                   </CardHeader>
                   <CardContent>
-                    <Typography color="textSecondary">
+                    <Typography color="textSecondary" component="h1" variant="h5">
                       {torcedor.nome}
                     </Typography>
                     <Typography>CPF: {maskCpf(torcedor.cpf)}</Typography>
                     <Typography>
-                      {torcedor.logradouro}, {torcedor.bairro}, {torcedor.cidade},{" "}
-                      {maskCep(torcedor.cep)}, {torcedor.complemento}
+                      {torcedor.logradouro}{" "}{torcedor.complemento}{" "}{torcedor.cidade},{" "}
+                      {torcedor.bairro}{" "}{maskCep(torcedor.cep)}
                     </Typography>
                     <Typography></Typography>
                     <Box m={2}>
@@ -145,8 +142,7 @@ class TorcedorLista extends React.Component {
                             torcedor.telefones.map((telefone) => (
                                 <Typography
                                   key={telefone.id}
-                                  color="textSecondary"
-                                >
+                                  color="textSecondary">
                                   {maskPhone(telefone.telefone, telefone.tipo)}
                                 </Typography>
                               ))}
@@ -156,7 +152,7 @@ class TorcedorLista extends React.Component {
                     </Box>
                   </CardContent>
                   <CardActions>
-                    {this.state.usuarioLogadoEhAdministrador && (
+                    {this.state.usuarioLogadoIsAdministrador && (
                       <React.Fragment>
                         <IconButton
                           aria-label="delete"

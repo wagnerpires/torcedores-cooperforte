@@ -18,7 +18,7 @@ public class TorcedorDTOMapper {
                 .cpf(torcedorDTO.getCpf())
                 .uf(torcedorDTO.getUf())
                 .cidade(torcedorDTO.getCidade())
-                .logradouro(torcedorDTO.getComplemento())
+                .logradouro(torcedorDTO.getLogradouro())
                 .complemento(torcedorDTO.getComplemento())
                 .bairro(torcedorDTO.getBairro())
                 .cep(torcedorDTO.getCep())
@@ -35,8 +35,6 @@ public class TorcedorDTOMapper {
 
         torcedor.setNome(torcedorDTO.getNome());
         torcedor.setCpf(torcedorDTO.getCpf());
-        torcedor.setUf(torcedorDTO.getUf());
-        torcedor.setUf(torcedorDTO.getUf());
         torcedor.setUf(torcedorDTO.getUf());
         torcedor.setCidade(torcedorDTO.getCidade());
         torcedor.setLogradouro(torcedorDTO.getLogradouro());

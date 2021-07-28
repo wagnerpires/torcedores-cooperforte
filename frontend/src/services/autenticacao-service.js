@@ -19,7 +19,7 @@ const obterUsuarioLogado = () => {
   return helper.decode(localStorage.getItem("token"));
  };
 
-const usuarioLogadoEhAdministrador = () => {
+const usuarioLogadoIsAdministrador = () => {
   const usuarioLogado = obterUsuarioLogado();
   return (
     usuarioLogado && usuarioLogado.perfil && usuarioLogado.perfil === "ADMIN"
@@ -41,6 +41,6 @@ const usuarioEstaLogado = () => {
 export {
   autenticar,
   deslogar,
-  usuarioLogadoEhAdministrador,
+  usuarioLogadoIsAdministrador,
   usuarioEstaLogado,
 };

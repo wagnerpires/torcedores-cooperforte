@@ -7,12 +7,12 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @SpringBootApplication
 @AllArgsConstructor
-public class CooperforteApplication {
+public class CooperforteServiceApplication {
 	private static PasswordEncoder bcryptEncoder;
 
 	public static void main(String[] args) {
 
-		SpringApplication.run(CooperforteApplication.class, args);
+		SpringApplication.run(CooperforteServiceApplication.class, args);
 	}
 
 }

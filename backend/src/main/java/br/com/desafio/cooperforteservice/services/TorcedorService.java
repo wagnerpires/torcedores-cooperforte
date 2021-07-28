@@ -8,6 +8,8 @@ import br.com.desafio.cooperforteservice.exceptions.TorcedorNotFound;
 import br.com.desafio.cooperforteservice.repositories.TorcedorRepository;
 import br.com.desafio.cooperforteservice.services.mappers.TorcedorDTOMapper;
 import lombok.AllArgsConstructor;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,22 +23,20 @@ public class TorcedorService {
     private LogService logService;
     private AutenticacaoService autenticacaoService;
 
-    @Transactional()
-    public Torcedor novo(TorcedorDTO torcedorDTO) {
-
+    @Transactional
+    public TorcedorDTO novo(TorcedorDTO dto) {
         Usuario usuarioLogado = autenticacaoService.obterUsuarioLogado();
-
-        Torcedor torcedor = TorcedorDTOMapper.parseParaEntity(torcedorDTO);
+        Torcedor torcedor = TorcedorDTOMapper.parseParaEntity(dto);
         torcedor.setUsuarioUltimaAtualizacao(usuarioLogado);
         torcedor.setUsuarioCriador(usuarioLogado);
 
-        torcedorRepository.save(torcedor);
+        torcedor = torcedorRepository.save(torcedor);
 
         logService.registrar(OperacaoEnum.CRIACAO, torcedor);
-
-        return torcedor;
+        return new TorcedorDTO(torcedor);
     }
 
+    @Transactional
     public List<Torcedor> listar() {
         return torcedorRepository.findAllByExcluidoFalse();
     }
@@ -50,7 +50,7 @@ public class TorcedorService {
     }
 
     @Transactional
-    public Torcedor editar(Long id, TorcedorDTO torcedorDTO) {
+    public TorcedorDTO editar(Long id, TorcedorDTO torcedorDTO) {
         Torcedor torcedor = torcedorRepository.findById(id).orElseThrow(() -> new TorcedorNotFound("Usuário não encontrado: " + id));
 
         TorcedorDTOMapper.atualizarEntity(torcedorDTO, torcedor);
@@ -59,6 +59,6 @@ public class TorcedorService {
 
         logService.registrar(OperacaoEnum.ATUALIZACAO, torcedor);
 
-        return torcedor;
+        return new TorcedorDTO(torcedor);
     }
 }

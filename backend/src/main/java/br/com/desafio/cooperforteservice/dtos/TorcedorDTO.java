@@ -1,5 +1,7 @@
 package br.com.desafio.cooperforteservice.dtos;
 
+import br.com.desafio.cooperforteservice.entities.Torcedor;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
@@ -32,7 +34,7 @@ public class TorcedorDTO {
     @NotNull
     @NotBlank
     @Size(min = 8, max = 8)
-   // @Pattern(regexp = "^[0-9]*$")
+    @Pattern(regexp = "^[0-9]*$")
     private String cep;
 
     @NotNull
@@ -55,5 +57,18 @@ public class TorcedorDTO {
 
     public TorcedorDTO() {
     }
+
+    public TorcedorDTO(Torcedor torcedor) {
+        this.id = torcedor.getId();
+        this.nome = torcedor.getNome();
+        this.cpf = torcedor.getCpf();
+        this.cep = torcedor.getCep();
+        this.logradouro = torcedor.getLogradouro();
+        this.bairro = torcedor.getBairro();
+        this.cidade = torcedor.getCidade();
+        this.uf = torcedor.getUf();
+        this.complemento = torcedor.getComplemento();
+    }
+
 }
 
