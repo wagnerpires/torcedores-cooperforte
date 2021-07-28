@@ -32,7 +32,7 @@ public class TorcedorDTO {
 
     @NotNull
     @NotBlank
-   // @Size(min = 8, max = 8)
+    @Size(min = 8, max = 8)
    // @Pattern(regexp = "^[0-9]*$")
     private String cep;
 

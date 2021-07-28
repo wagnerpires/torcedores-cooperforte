@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Entity(name = "transacao")
+@Entity(name = "tb_transacao")
 public class Logs {
 
     @Id

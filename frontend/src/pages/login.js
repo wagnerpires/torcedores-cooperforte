@@ -7,6 +7,7 @@ import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import { autenticar } from "../services/autenticacao-service";
 import { withRouter } from "react-router-dom";
+import { erro } from "./alerts/alertas";
 
 class Login extends React.Component {
   constructor(props) {
@@ -26,9 +27,8 @@ class Login extends React.Component {
           this.props.history.push("/torcedores");
         }
       })
-      .catch((erro) => {
-        alert("Usuário ou senha inválidos!");
-        //erro("Erro no login", erro);
+      .catch((error) => {
+        erro("Aviso", "Usuário ou senha inválidos!");
       });
   };
 

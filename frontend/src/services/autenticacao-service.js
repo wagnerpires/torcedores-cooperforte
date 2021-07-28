@@ -17,8 +17,7 @@ const deslogar = () => {
 const obterUsuarioLogado = () => {
   const helper = JWTHelper.createJWTHelper();
   return helper.decode(localStorage.getItem("token"));
-  //Criar contexto para usuário logado
-};
+ };
 
 const usuarioLogadoEhAdministrador = () => {
   const usuarioLogado = obterUsuarioLogado();
