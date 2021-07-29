@@ -2,8 +2,8 @@
 
 ## Para executar o projeto
 
-### `yarn`install
-###  yarn start`
+###  yarn install
+###  yarn start
 
 Acessar a url [http://localhost:3000](http://localhost:3000) para navegar
 
@@ -37,10 +37,11 @@ github: https://github.com/wagnerpires/torcedores-cooperforte-backend
 * DockerFile (Docker)
 * H2 Database
 * Maven
-* Ecossistema Spring: Jpa, SpringWeb, SpringDevTools, SpringSecurity
+* Ecossistema Spring
 * Material ui (Ui Framework)
 * Via Cep (API)
-* JUnit
+* JUnit 5
+* Apache Kafka (mock)
 	
 
 
