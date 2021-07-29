@@ -45,7 +45,7 @@ public class TorcedorService {
 
     @Transactional
     public void excluir(Long id) {
-        Torcedor torcedor = torcedorRepository.findById(id).orElseThrow(() -> new TorcedorNotFound("Usuário não encontrado: " + id));
+        Torcedor torcedor = torcedorRepository.findById(id).orElseThrow(() -> new TorcedorNotFound("Torcedor não encontrado: " + id));
         torcedorKafka.torcedorDesligado(torcedor);
         logService.registrar(OperacaoEnum.DELECAO, torcedor);
         torcedor.setExcluido(true);
@@ -54,7 +54,7 @@ public class TorcedorService {
 
     @Transactional
     public TorcedorDTO editar(Long id, TorcedorDTO torcedorDTO) {
-        Torcedor torcedor = torcedorRepository.findById(id).orElseThrow(() -> new TorcedorNotFound("Usuário não encontrado: " + id));
+        Torcedor torcedor = torcedorRepository.findById(id).orElseThrow(() -> new TorcedorNotFound("Torcedor não encontrado: " + id));
         TorcedorDTOMapper.atualizarEntity(torcedorDTO, torcedor);
         torcedor.setUsuarioUltimaAtualizacao(autenticacaoService.obterUsuarioLogado());
         torcedorRepository.save(torcedor);

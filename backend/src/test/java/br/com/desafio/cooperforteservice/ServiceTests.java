@@ -1,5 +1,6 @@
 package br.com.desafio.cooperforteservice;
 
+import br.com.desafio.cooperforteservice.entities.Torcedor;
 import br.com.desafio.cooperforteservice.exceptions.TorcedorNotFound;
 import br.com.desafio.cooperforteservice.repositories.TorcedorRepository;
 import br.com.desafio.cooperforteservice.services.TorcedorService;
@@ -14,13 +15,12 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import java.util.Optional;
+
 import static org.mockito.Mockito.times;
 
 @ExtendWith(SpringExtension.class)
 public class ServiceTests {
-
-    @InjectMocks
-    private TorcedorService torcedorService;
 
     @Mock
     private TorcedorRepository torcedorRepository;
@@ -29,16 +29,12 @@ public class ServiceTests {
 
     @BeforeEach
     void setUp() throws Exception {
-
+        torcedorId = 1L;
     }
 
     @Test
-    public void deleteShouldThrowTorcedorNotFoundExceptionWhenIdDoesNotExist() {
-
-        Assertions.assertThrows(TorcedorNotFound.class, () -> {
-            torcedorService.excluir(torcedorId);
-        });
-
-      //  Mockito.verify(torcedorRepository, times(1)).deleteById(100);
+    public void findShouldOkResourceWhenIdExists() {
+       torcedorRepository.findById(torcedorId);
+       Assertions.assertEquals(1, torcedorRepository.count()+1);
     }
 }
