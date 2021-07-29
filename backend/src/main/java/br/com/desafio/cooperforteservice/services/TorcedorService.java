@@ -5,6 +5,7 @@ import br.com.desafio.cooperforteservice.dtos.TorcedorDTO;
 import br.com.desafio.cooperforteservice.entities.Torcedor;
 import br.com.desafio.cooperforteservice.enums.OperacaoEnum;
 import br.com.desafio.cooperforteservice.exceptions.TorcedorNotFound;
+import br.com.desafio.cooperforteservice.kafka.TorcedorKafka;
 import br.com.desafio.cooperforteservice.repositories.TorcedorRepository;
 import br.com.desafio.cooperforteservice.services.mappers.TorcedorDTOMapper;
 import lombok.AllArgsConstructor;
@@ -21,11 +22,13 @@ public class TorcedorService {
     private TorcedorRepository torcedorRepository;
     private LogService logService;
     private AutenticacaoService autenticacaoService;
+    private TorcedorKafka torcedorKafka;
 
     @Transactional
-    public TorcedorDTO novo(TorcedorDTO dto) {
+    public TorcedorDTO novo(TorcedorDTO torcedorDTO) {
+        torcedorKafka.torcedorCadastrado(torcedorDTO);
         Usuario usuarioLogado = autenticacaoService.obterUsuarioLogado();
-        Torcedor torcedor = TorcedorDTOMapper.parseParaEntity(dto);
+        Torcedor torcedor = TorcedorDTOMapper.parseParaEntity(torcedorDTO);
         torcedor.setUsuarioUltimaAtualizacao(usuarioLogado);
         torcedor.setUsuarioCriador(usuarioLogado);
 
@@ -43,6 +46,7 @@ public class TorcedorService {
     @Transactional
     public void excluir(Long id) {
         Torcedor torcedor = torcedorRepository.findById(id).orElseThrow(() -> new TorcedorNotFound("Usuário não encontrado: " + id));
+        torcedorKafka.torcedorDesligado(torcedor);
         logService.registrar(OperacaoEnum.DELECAO, torcedor);
         torcedor.setExcluido(true);
         torcedorRepository.save(torcedor);
