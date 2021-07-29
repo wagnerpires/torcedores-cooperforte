@@ -13,4 +13,6 @@ public interface TorcedorRepository extends JpaRepository<Torcedor, Integer> {
     Optional<Torcedor> findById(Long id);
 
     List<Torcedor> findAllByExcluidoFalse();
+
+
 }
