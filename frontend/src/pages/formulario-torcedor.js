@@ -81,7 +81,7 @@ class FormularioTorcedor extends React.Component {
         this.props.history.push("/torcedores");
       })
       .catch(() => {
-        erro("Aviso", "Ocorreu um erro ao tentar salvar o torcedor");
+        erro("Aviso", "Não foi possível salvar o torcedor, CPF já cadastrado...");
       });
   };
 
@@ -151,10 +151,21 @@ class FormularioTorcedor extends React.Component {
         telefone.telefone === getFieldProps("celular").value
     );
 
+    const contatoPrincipalCadastrado = values.telefones.some(
+        (telefone) =>
+            telefone.principal === getFieldProps("principal").value
+    );
+
     if (telefoneCadastrado) {
       erro("Aviso", "Telefone já cadastrado");
       return;
     }
+
+    if (contatoPrincipalCadastrado) {
+      erro("Aviso", "Contato principal já cadastrado");
+      return;
+    }
+
 
     arrayHelpers.push({
       telefone: getFieldProps("celular").value,
@@ -498,10 +509,6 @@ class FormularioTorcedor extends React.Component {
 
                 <div className="botao-salvar"></div>
                 <Grid container direction="row" justifyContent="space-around" alignItems="center">
-                  <Button type="submit" form="form1" variant="contained" color="primary" disabled={!isValid}>
-                    Salvar
-                  </Button>
-
                   <Link to={"/torcedores"} className={classes.link}>
                     <Typography variant="body2">
                       <Button  className={classes.submit} margin="normal" variant="contained" color="primary">
@@ -509,6 +516,19 @@ class FormularioTorcedor extends React.Component {
                       </Button>
                     </Typography>
                   </Link>
+
+                  <Button type="submit" form="form1" variant="contained" color="primary" disabled={!isValid}>
+                    Cadastrar
+                  </Button>
+
+                  <Link to={"/"} className={classes.link}>
+                    <Typography variant="body2">
+                      <Button  className={classes.submit} margin="normal" variant="contained" color="primary">
+                        Encerrar
+                      </Button>
+                    </Typography>
+                  </Link>
+
                 </Grid>
               </form>
             )}
