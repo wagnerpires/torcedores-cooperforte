@@ -2,6 +2,7 @@ package br.com.desafio.cooperforteservice.dtos;
 
 import br.com.desafio.cooperforteservice.entities.Torcedor;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
@@ -10,6 +11,7 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.util.List;
 
+@Builder
 @Data
 @AllArgsConstructor
 public class TorcedorDTO {

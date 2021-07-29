@@ -16,4 +16,15 @@ public class EmailDTOMapper {
                 .collect(Collectors.toList());
     }
 
+    public static List<EmailDTO> parseParaDTO(List<Email> emails) {
+        return emails.stream().map(email -> EmailDTO.builder()
+                        .id(email.getId())
+                        .email(email.getEmail())
+                        .build())
+                .collect(Collectors.toList());
+    }
+
+
+
+
 }

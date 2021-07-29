@@ -42,7 +42,7 @@ public class TorcedorController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Torcedor>> listar(){
+    public ResponseEntity<List<TorcedorDTO>> listar(){
         return ResponseEntity.ok(torcedorService.listar());
     }
 }

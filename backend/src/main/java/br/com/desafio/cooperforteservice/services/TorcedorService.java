@@ -8,12 +8,11 @@ import br.com.desafio.cooperforteservice.exceptions.TorcedorNotFound;
 import br.com.desafio.cooperforteservice.repositories.TorcedorRepository;
 import br.com.desafio.cooperforteservice.services.mappers.TorcedorDTOMapper;
 import lombok.AllArgsConstructor;
-import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -37,8 +36,8 @@ public class TorcedorService {
     }
 
     @Transactional
-    public List<Torcedor> listar() {
-        return torcedorRepository.findAllByExcluidoFalse();
+    public List<TorcedorDTO> listar() {
+        return torcedorRepository.findAllByExcluidoFalse().stream().map(t -> TorcedorDTOMapper.parseParaDTO(t)).collect(Collectors.toList());
     }
 
     @Transactional

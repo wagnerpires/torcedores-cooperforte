@@ -4,11 +4,30 @@ import br.com.desafio.cooperforteservice.dtos.TorcedorDTO;
 import br.com.desafio.cooperforteservice.entities.Torcedor;
 import br.com.desafio.cooperforteservice.entities.Email;
 import br.com.desafio.cooperforteservice.entities.Telefone;
+import lombok.Builder;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 public class TorcedorDTOMapper {
+
+    public static  TorcedorDTO parseParaDTO(Torcedor torcedor) {
+
+        return TorcedorDTO.builder()
+                .id(torcedor.getId())
+                .nome(torcedor.getNome())
+                .cpf(torcedor.getCpf())
+                .uf(torcedor.getUf())
+                .cidade(torcedor.getCidade())
+                .logradouro(torcedor.getLogradouro())
+                .complemento(torcedor.getComplemento())
+                .bairro(torcedor.getBairro())
+                .cep(torcedor.getCep())
+                .emails(EmailDTOMapper.parseParaDTO(torcedor.getEmails()))
+                .telefones(TelefoneDTOMapper.parseParaDTO(torcedor.getTelefones()))
+                .build();
+    }
+
 
     public static Torcedor parseParaEntity(TorcedorDTO torcedorDTO) {
 
