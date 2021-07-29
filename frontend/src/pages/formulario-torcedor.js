@@ -517,7 +517,7 @@ class FormularioTorcedor extends React.Component {
                   </Link>
 
                   <Button type="submit" form="form1" variant="contained" color="primary" disabled={!isValid}>
-                    Cadastrar
+                    Salvar
                   </Button>
 
                   <Link to={"/"} className={classes.link}>
