@@ -15,6 +15,19 @@ Acessar a url [http://localhost:3000](http://localhost:3000) para navegar
 	usuário: cooper - Visualização (listar torcedores)
 	senha: 123456
 
+### Para acesso ao banco de dados:
+
+    http://localhost:8080/h2-console/
+    JDBC url: jdbc:h2:mem:testdb
+    user: sa
+    password: (em branco)
+
+
+### BACKEND
+
+github: https://github.com/wagnerpires/torcedores-cooperforte-backend
+
+
 ### Principais tecnologias utilizadas no desenvolvimento:
 
 * Java 11
